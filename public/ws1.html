@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Client1</h1>
+    <script>
+        let webSocket;
+    </script>
+
+<script>
+
+</script>
+<script src="https://unpkg.com/peerjs@1.5.1/dist/peerjs.min.js"></script>
+
+    <script src="./Js/ws1.js" type="module"></script>
+    <script>
+        var peer = new Peer();
+
+        var conn = peer.connect('another-peers-id');
+// on open will be launch when you successfully connect to PeerServer
+conn.on('open', function(){
+  // here you have conn.id
+  conn.send('hi!');
+});
+
+peer.on('connection', function(conn) {
+  conn.on('data', function(data){
+    // Will print 'hi!'
+    console.log(data);
+  });
+});
+    </script>
+</body>
+
+</html>
